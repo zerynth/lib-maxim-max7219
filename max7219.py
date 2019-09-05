@@ -222,8 +222,12 @@ class MAX7219(spi.Spi):
         if (row < 0) or (row > 7):
             return
 
+        new_led_state = 0
+        if state:
+            new_led_state = 1
+
         for i in range(8):
-            self.set_led(row, i, 1)
+            self.set_led(row, i, new_led_state)
 
 
     def set_column(self, col, state):
@@ -239,8 +243,12 @@ class MAX7219(spi.Spi):
         if (col < 0) or (col > 7):
             return
         
+        new_led_state = 0
+        if state:
+            new_led_state = 1
+
         for i in range(8):
-            self.set_led(i, col, 1)
+            self.set_led(i, col, new_led_state)
 
     def set_digit(self, digit, value, dp):
         """
